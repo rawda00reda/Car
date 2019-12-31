@@ -1,0 +1,12 @@
+body{direction:rtl}
+.text-right{text-align:left!important}
+.text-left{text-align:right!important}
+.save p{text-align:right}
+.choose-us{text-align:right}
+.choose-us .h1::after{display:none}
+.choose-us .h1::before{display:none}
+.choose-us .h1::after{content:"";border-top:40px solid #fc7d1c;border-right:40px solid transparent;position:absolute;display:flex;margin-top:-3px;margin-right:260px;transform:rotate(-45deg)}
+.choose-us .h1::before{
+    content:"";
+    border-bottom:40px solid #fc7d1c;border-left:40px solid transparent;
+    position:absolute;display:flex;margin-top:-38px;margin-right:-40px;transform:rotate(-45deg)}.owl-carousel{direction:ltr}.title-box h2::after{content:"";border-top:35px solid #fc7d1c;border-right:35px solid transparent;position:absolute;display:flex;margin-top:-2px;margin-right:150px;transform:rotate(-45deg)}footer{text-align:right}.product-ambulance{text-align:right}.quan-cart button{float:right}.quan{display:block;padding-bottom:15px}.product-ambulance .imgBx::before{top:-50px;right:-350px}.shopping{text-align:right}.navbar{text-align:center}.checkout-info{text-align:right}.form-left-check{text-align:right}.aboutus-infor p{text-align:right}.contact-page{text-align:right}
