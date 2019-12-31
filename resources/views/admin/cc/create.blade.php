@@ -15,6 +15,14 @@
                 <form method="POST" action="{{url(LaravelLocalization::getCurrentLocale().'/admin/cc')}}"  enctype="multipart/form-data">
                     {{ csrf_field() }}
                     <div class="box-body col-md-8 col-sm-offset-1">
+                        <div class="form-group col-lg-4">
+                            <label  for="filter">@lang('lang.date')</label>
+                            <select id="filter" name="date_id" class="form-control" style="height: 46px; width: 70%">
+                                @foreach ($dates as $date)
+                                    <option value="{{ $date->id }}" >{{ $date->date }}</option>
+                                @endforeach
+                            </select>
+                        </div>
 
                         <div class="form-group col-lg-4 {{ $errors->has('cc') ? ' has-error' : '' }}">
                             <label for="cc">@lang('lang.Add') @lang('lang.cc')  </label>

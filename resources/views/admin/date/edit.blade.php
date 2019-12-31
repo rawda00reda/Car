@@ -20,8 +20,22 @@
 
                     @csrf
                     <div class="box-body col-md-10 col-sm-offset-1">
+                        <div class="form-group col-lg-6">
+                            <label  for="filter">@lang('lang.CarModel')</label>
+                            <select id="filter" name="model_id" class="form-control" style="height: 46px; width: 80%">
+                                @foreach ($models as $model)
+                                    @if ( app()->getLocale() == 'ar' )
+                                        <option {{ $model->id == "$date->model_id" ? "selected" : "" }} value="{{ $model->id }}" >{{ $model->titleAr}}</option>
 
-                        <div class="form-group col-lg-3 {{ $errors->has('date') ? ' has-error' : '' }}">
+                                    @elseif ( app()->getLocale() == 'en' )
+                                        <option {{ $model->id == "$date->model_id" ? "selected" : "" }} value="{{ $model->id }}" >{{ $model->titleEn}}</option>
+                                    @else
+                                        <option {{ $model->id == "$date->model_id" ? "selected" : "" }} value="{{ $model->id }}" >{{ $model->titleUr}}</option>@endif
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <div class="form-group col-lg-6 {{ $errors->has('date') ? ' has-error' : '' }}">
                             <label for="date">@lang('lang.date')</label>
                             <input type="text" id="myname_ar" name="date" class="form-control"  value="{{$date->date}}" />
                             <span class="help-block">{{ $errors->first('date', ':message') }}</span>

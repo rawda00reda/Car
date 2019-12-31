@@ -20,6 +20,14 @@
 
                     @csrf
                     <div class="box-body col-md-10 col-sm-offset-1">
+                        <div class="form-group col-lg-4">
+                            <label  for="filter">@lang('lang.date')</label>
+                            <select id="filter" name="date_id" class="form-control" style="height: 46px; width: 70%">
+                                @foreach ($dates as $date)
+                                    <option {{ $date->id == "$cc->date_id" ? "selected" : "" }} value="{{ $date->id }}" >{{ $date->date}}</option>
+                                @endforeach
+                            </select>
+                        </div>
 
                         <div class="form-group col-lg-3 {{ $errors->has('cc') ? ' has-error' : '' }}">
                             <label for="cc">@lang('lang.cc')</label>

@@ -16,6 +16,9 @@ class CreateCcsTable extends Migration
         Schema::create('ccs', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->Integer('cc');
+            $table->unsignedBigInteger('date_id');
+            $table->foreign('date_id')->references('id')
+                ->on('dates')->onDelete('cascade');
             $table->timestamps();
         });
     }

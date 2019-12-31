@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Cc;
+use App\Date;
 use Illuminate\Http\Request;
 
 class CcController extends Controller
@@ -34,7 +35,8 @@ class CcController extends Controller
      */
     public function create()
     {
-        return view('admin/cc/create');
+        $dates=Date::all();
+        return view('admin/cc/create',compact('dates'));
 
     }
 
@@ -48,12 +50,13 @@ class CcController extends Controller
     {
         $this->validate($request, [
             'cc' => 'required',
+            'date_id' => 'required',
 
         ]);
 
         $cc =new Cc()  ;
         $cc->Cc = request('cc');
-
+        $cc->date_id = request('date_id');
         $cc->save();
 
         return redirect('admin/cc')->with('success',trans('lang.saveb'));    }
@@ -78,7 +81,8 @@ class CcController extends Controller
     public function edit($id)
     {
         $cc=Cc::find($id);
-        return view('admin/cc/edit',compact('cc'));
+        $dates=Date::all();
+        return view('admin/cc/edit',compact('cc','dates'));
     }
 
     /**
@@ -92,11 +96,12 @@ class CcController extends Controller
     {
         $this->validate($request, [
             'cc' => 'required',
-
+            'date_id' => 'required',
         ]);
-        $cc=Cc::find($id);
-        $cc->cc = request('cc');
 
+        $cc=Cc::find($id);
+        $cc->Cc = request('cc');
+        $cc->date_id = request('date_id');
         $cc->save();
         return redirect('admin/cc')->with('success',trans('lang.iupdate'));
     }

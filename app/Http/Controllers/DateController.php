@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\CarMode;
 use App\Date;
 use Illuminate\Http\Request;
 
@@ -33,7 +34,8 @@ class DateController extends Controller
      */
     public function create()
     {
-        return view('admin/date/create');
+        $models=CarMode::all();
+        return view('admin/date/create',compact('models'));
 
     }
 
@@ -47,11 +49,13 @@ class DateController extends Controller
     {
         $this->validate($request, [
             'date' => 'required',
+            'model_id'=>'required'
 
         ]);
 
         $date =new Date()  ;
         $date->date = request('date');
+        $date->model_id = request('model_id');
 
         $date->save();
 
@@ -77,7 +81,8 @@ class DateController extends Controller
     public function edit($id)
     {
         $date=Date::find($id);
-        return view('admin/date/edit',compact('date'));
+        $models=CarMode::all();
+        return view('admin/date/edit',compact('date'),compact('models'));
     }
 
     /**
@@ -91,10 +96,12 @@ class DateController extends Controller
     {
         $this->validate($request, [
             'date' => 'required',
-
+            'model_id'=>'required'
         ]);
         $date=Date::find($id);
         $date->date = request('date');
+        $date->model_id = request('model_id');
+
 
         $date->save();
         return redirect('admin/date')->with('success',trans('lang.iupdate'));
