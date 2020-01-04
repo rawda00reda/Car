@@ -19,6 +19,15 @@ class MobileController extends Controller
         $citys = CountryResource::collection(City::get());
         return response()->json(['citys'=>$citys], 200);
     }
+    public function cityById($id)
+    {
+        $citys = CountryResource::collection(City::where('country_id',$id)->get());
+        if ($citys) {
+            return response()->json(['citys'=> $citys], 200);
+        } else {
+            return response()->json(['citys'=> null], 200);
+        }    }
+
 
     public function country()
     {

@@ -30,8 +30,10 @@ class CityController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {    $cities=City::all();
-        return view('admin/city/create');
+    {
+        $cities=City::all();
+          $country=Country::all();
+        return view('admin/city/create',compact('country'));
     }
 
     /**
@@ -46,11 +48,13 @@ class CityController extends Controller
             'cityAr'=>'required',
             'cityEn'=>'required',
             'cityUr'=>'required',
+            'country_id'=>'required'
         ]);
         $city=new City();
         $city->cityAr=request('cityAr');
         $city->cityEn=request('cityEn');
         $city->cityUr=request('cityUr');
+        $city->country_id=request('country_id');
         $city->save();
         return redirect('admin/city')->with('success','تم اضافه البيانات بنجاح');
     }
@@ -75,7 +79,8 @@ class CityController extends Controller
     public function edit($id)
     {
         $city=City::find($id);
-        return view('admin/city/edit',compact('city'));
+        $country=Country::all();
+        return view('admin/city/edit',compact('city','country'));
     }
 
     /**
@@ -92,11 +97,14 @@ class CityController extends Controller
             'cityAr'=>'required',
             'cityEn'=>'required',
             'cityUr'=>'required',
+            'country_id'=>'required'
+
 
         ]);
         $city->cityAr=request('cityAr');
         $city->cityEn=request('cityEn');
         $city->cityUr=request('cityUr');
+        $city->country_id=request('country_id');
         $city->save();
         return redirect('admin/city')->with('success','تم تعديل البيانات بنجاح');
     }

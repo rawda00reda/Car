@@ -26,6 +26,10 @@ class CountryResource extends JsonResource
                 $this->mergeWhen($this->titleAr, [
                     'special' => $this->titleAr,
                 ]),
+                $this->mergeWhen($this->country_id, [
+                    'country_id' => $this->country_id,
+                ]),
+
 
             ];
         }
@@ -41,6 +45,9 @@ class CountryResource extends JsonResource
                 $this->mergeWhen($this->titleEn, [
                     'special' => $this->titleEn,
                 ]),
+                $this->mergeWhen($this->country_id, [
+                    'country_id' => $this->country_id,
+                ]),
 
             ];
         }
@@ -55,6 +62,9 @@ class CountryResource extends JsonResource
                 ]),
                 $this->mergeWhen($this->titleUr, [
                     'special' => $this->titleUr,
+                ]),
+                $this->mergeWhen($this->country_id, [
+                    'country_id' => $this->country_id,
                 ]),
             ];
         }

@@ -13,4 +13,8 @@ class City extends Model
     public  function branch(){
         return $this->hasMany('App\mainBranch');
     }
+
+    public  function country(){
+        return $this->belongsTo('App\Country');
+    }
 }
